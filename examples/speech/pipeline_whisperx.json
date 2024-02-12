@@ -19,7 +19,7 @@
       "input":  [{ "name": "audio", "type": "bytes" }],
       "output": [{ "name": "text",  "type": "bytes" }],
       "deploy": {
-        "local": { "module": "speech_elements.py" }
+        "local": { "module": "aiko_services.elements.speech_elements" }
       }
     },
     { "name":   "PE_RemoteSend2",
