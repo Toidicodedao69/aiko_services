@@ -215,9 +215,9 @@ if WHISPERX_LOADED:
                     text = text.removesuffix(".")
                     _LOGGER.info(f"PE_WhisperX[{frame_id}] INPUT: {text}")
 
-                    reply = aide_http_request(0, text, welcome=self._welcome)
+                    # reply = aide_http_request(0, text, welcome=self._welcome)
                     self._welcome = False
-                    _LOGGER.info(f"PE_WhisperX[{frame_id}] OUTPUT: {reply}")
+                    # _LOGGER.info(f"PE_WhisperX[{frame_id}] OUTPUT: {reply}")
 
                     topic_out = f"{get_namespace()}/speech"
                     payload_out = generate("text", [reply])
@@ -227,6 +227,6 @@ if WHISPERX_LOADED:
 
             if text == "terminate":
                 raise SystemExit()
-            return True, {"text": reply}
+            return True, {"text": text}
 
 # --------------------------------------------------------------------------- #
