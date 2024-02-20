@@ -167,7 +167,7 @@ def aide_http_request(user_id, message, welcome=False):
 
 import torch
 
-CUDA_DEVICE = "cuda"
+CUDA_DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
                                   # Parameters    VRAM size  Relative speed
 WHISPERX_MODEL_SIZE = "tiny"    #    39 M       2,030 Mb   32x
 # WHISPERX_MODEL_SIZE = "base"    #    74 M       2,054 Mb   16x
@@ -192,7 +192,7 @@ if WHISPERX_LOADED:
             implementation.__init__(self, context)
 
             self._ml_model = whisperx.load_model(
-                WHISPERX_MODEL_SIZE, CUDA_DEVICE)
+                WHISPERX_MODEL_SIZE, CUDA_DEVICE, compute_type="int8")
             _LOGGER.info(f"PE_WhisperX: ML model loaded: {WHISPERX_MODEL_SIZE}")
             self._welcome = True
 
