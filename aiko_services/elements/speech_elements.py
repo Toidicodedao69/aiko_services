@@ -167,7 +167,7 @@ def aide_http_request(user_id, message, welcome=False):
 
 import torch
 
-CUDA_DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+CUDA_DEVICE = "cuda"
                                   # Parameters    VRAM size  Relative speed
 WHISPERX_MODEL_SIZE = "tiny"    #    39 M       2,030 Mb   32x
 # WHISPERX_MODEL_SIZE = "base"    #    74 M       2,054 Mb   16x
