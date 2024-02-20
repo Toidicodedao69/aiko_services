@@ -192,7 +192,7 @@ if WHISPERX_LOADED:
             implementation.__init__(self, context)
 
             self._ml_model = whisperx.load_model(
-                WHISPERX_MODEL_SIZE, CUDA_DEVICE, compute_type="int8")
+                WHISPERX_MODEL_SIZE, CUDA_DEVICE)
             _LOGGER.info(f"PE_WhisperX: ML model loaded: {WHISPERX_MODEL_SIZE}")
             self._welcome = True
 
