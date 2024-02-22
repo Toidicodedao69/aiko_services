@@ -411,6 +411,9 @@ class PE_RemoteReceive2(PE_RemoteReceive0):
         if not text:
             text = None
         return True, {"text": text}
+    
+class PE_RemoteReceive3(PE_RemoteReceive0):
+    pass
 
 # --------------------------------------------------------------------------- #
 
@@ -438,6 +441,9 @@ class PE_RemoteSend1(PE_RemoteSend0):
         return True, {}
 
 class PE_RemoteSend2(PE_RemoteSend1):
+    pass
+
+class PE_RemoteSend3(PE_RemoteSend0):
     pass
 
 # --------------------------------------------------------------------------- #
