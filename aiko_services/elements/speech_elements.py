@@ -108,7 +108,7 @@ if COQUI_TTS_LOADED:
             implementation = context.get_implementation("PipelineElement")
             implementation.__init__(self, context)
 
-            self._ml_model = TTS(COQUI_MODEL_NAME)
+            self._ml_model = TTS(COQUI_MODEL_NAME).to("cuda")
             _LOGGER.info(f"PE_COQUI_TTS: ML model loaded: {COQUI_MODEL_NAME}")
 
             self.ec_producer.update("speech", "<silence>")
