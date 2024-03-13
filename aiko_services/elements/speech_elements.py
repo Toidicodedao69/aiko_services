@@ -169,10 +169,10 @@ import torch
 
 CUDA_DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
                                   # Parameters    VRAM size  Relative speed
-WHISPERX_MODEL_SIZE = "tiny"    #    39 M       2,030 Mb   32x
+# WHISPERX_MODEL_SIZE = "tiny"    #    39 M       2,030 Mb   32x
 # WHISPERX_MODEL_SIZE = "base"    #    74 M       2,054 Mb   16x
 # WHISPERX_MODEL_SIZE = "small"   #   244 M       2,926 Mb    6x
-# WHISPERX_MODEL_SIZE = "medium"    #   769 M       5,890 Mb    2x
+WHISPERX_MODEL_SIZE = "medium"    #   769 M       5,890 Mb    2x
 # WHISPERX_MODEL_SIZE = "large"   # 1,550 M     > 6,140 Mb    1x
 
 WHISPERX_LOADED = False  # whisperX Speech-To-Text (STT)
@@ -192,7 +192,7 @@ if WHISPERX_LOADED:
             implementation.__init__(self, context)
 
             self._ml_model = whisperx.load_model(
-                WHISPERX_MODEL_SIZE, CUDA_DEVICE, compute_type="int8")
+                WHISPERX_MODEL_SIZE, CUDA_DEVICE)
             _LOGGER.info(f"PE_WhisperX: ML model loaded: {WHISPERX_MODEL_SIZE}")
             self._welcome = True
 
