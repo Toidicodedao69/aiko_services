@@ -114,17 +114,17 @@ if COQUI_TTS_LOADED:
             self.ec_producer.update("speech", "<silence>")
             self.ec_producer.update("frame_id", -1)
 
-        def process_frame(self, context, text) -> Tuple[bool, dict]:
+        def process_frame(self, context, output) -> Tuple[bool, dict]:
             frame_id = self.share["frame_id"] + 1
             self.ec_producer.update("frame_id", frame_id)
-            if text:
-                audio = self._ml_model.tts(text, speaker=COQUI_SPEAKER_ID)
-                text = text.replace(" ", " ")  # Unicode U00A0 (NBSP)
+            if output:
+                audio = self._ml_model.tts(output, speaker=COQUI_SPEAKER_ID)
+                output = output.replace(" ", " ")  # Unicode U00A0 (NBSP)
             else:
                 audio = None
-                text = "<silence>"
-            _LOGGER.debug(f"PE_COQUI TTS: {text}")
-            self.ec_producer.update("speech", text)
+                output = "<silence>"
+            _LOGGER.debug(f"PE_COQUI TTS: {output}")
+            self.ec_producer.update("speech", output)
             return True, {"audio": audio}
 
 # --------------------------------------------------------------------------- #
